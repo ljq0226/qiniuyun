@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components{
+  .border-base{
+    @apply border-border-base
+  }
+  .border-dark{
+    @apply border-border-dark
+  }
+  .border-code{
+    @apply border-border-code
+  }
+  .bg-base{
+    @apply bg-bg-base
+  }
+  .bg-active{
+    @apply bg-bg-active
+  }
+  .bg-card{
+    @apply bg-bg-card
+  }
+  .bg-code{
+    @apply bg-bg-code
+  }
+  .bg-selection{
+    @apply bg-bg-selection
+  }
+  .bg-dm{
+    @apply bg-bg-dm
+  }
+  .bg-btn-disabled{
+    @apply bg-bg-btn-disabled
+  }
+  .text-bs{
+    @apply text-text-bs
+  }
+  .text-code{
+    @apply text-text-code
+  }
+  .text-secondary{
+    @apply text-text-secondary
+  }
+  .text-secondary-light{
+    @apply text-text-secondary-light
+  }
+  .text-btn-disabled{
+    @apply text-text-btn-disabled
+  }
+  .text-btn-disabled-deeper{
+    @apply text-text-btn-disabled-deeper
+  }
+  .text-btn{
+    @apply text-text-btn
+  }
+}
+
+
+@layer components{
+  .flex-center{
+    @apply justify-center items-center
+  }
+  .hover-animation {
+    @apply transition-colors duration-200 hover:bg-active
+  }
+}
