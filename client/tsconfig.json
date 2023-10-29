@@ -6,8 +6,10 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "bundler",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
     },
     "resolveJsonModule": true,
     "allowJs": true,
