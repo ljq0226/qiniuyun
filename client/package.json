@@ -1,24 +1,28 @@
 {
   "name": "client",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "next": "14.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "zustand": "^4.4.4"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "1.0.0-beta.29",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
-    "eslint": "^8",
+    "eslint": "^8.52.0",
     "eslint-config-next": "14.0.0",
     "postcss": "^8",
     "tailwindcss": "^3",
