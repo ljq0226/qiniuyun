@@ -14,7 +14,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="h-screen w-screen dark">
+        <div className="bg-home"></div>
+        <div>
+          {children}
+        </div>
+      </body>
     </html>
   )
 }
