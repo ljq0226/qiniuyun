@@ -14,10 +14,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen dark">
-        <div className="bg-home"></div>
+      <body className="h-screen w-screen">
+        <div className="flex bg-[var(--color-bg-b0) bg-top bg-cover]">
+          <div className="bg-home"></div>
+          <div className="relative">
+            {children}
+          </div>
+        </div>
         <div>
-          {children}
+
         </div>
       </body>
     </html>

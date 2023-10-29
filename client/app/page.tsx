@@ -1,7 +1,16 @@
+'use client'
+import useTheme from '@/hooks/useTheme'
+
 export default function Home() {
+  const { theme, setTheme } = useTheme()
+  const handleClick = () => {
+    console.log('theme', theme)
+    setTheme(theme === 'dark' ? 'light' : 'dark')
+  }
+
   return (
-    <div>
-      123
+    <div className="text-black dark:text-white">
+      <button onClick={handleClick}>切换主题</button>
     </div>
   )
 }

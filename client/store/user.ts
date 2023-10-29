@@ -8,4 +8,4 @@ const UserStore = create<UserState>(set => ({
 
 }))
 
-export default UserStore
+export { UserStore }
