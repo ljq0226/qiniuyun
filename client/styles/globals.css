@@ -4,20 +4,10 @@
 
 
 @layer components{
-
-}
-
-
-@layer components{
   .flex-center{
     @apply justify-center items-center
   }
   .hover-animation {
     @apply transition-colors duration-200 hover:bg-active
   }
-  .bg-home {
-    @apply fixed h-screen w-screen bg-no-repeat bg-[var(--color-bg-b0)] bg-[url(https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/test.png)]
-
-  }
-
 }

@@ -4,7 +4,6 @@ import useTheme from '@/hooks/useTheme'
 export default function Home() {
   const { theme, setTheme } = useTheme()
   const handleClick = () => {
-    console.log('theme', theme)
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
