@@ -4,12 +4,12 @@
     "target": "es5",
     "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
+    "baseUrl": ".",
     "module": "esnext",
     "moduleResolution": "bundler",
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@components/*": ["components/*"],
+      "@components/*": ["components/*"]
     },
     "resolveJsonModule": true,
     "allowJs": true,
