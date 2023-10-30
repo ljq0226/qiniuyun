@@ -16,16 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="h-screen w-screen">
+      <body className="h-screen w-screen ">
         <div className="flex bg-[var(--c-bg-b0)] h-full">
           <div className="relative flex h-full w-full text-[var(--c-text-t3)] bg-no-repeat bg-cover bg-[url(https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/test.png)] bg-[var(--c-bg-b0)] ">
-            <aside>
-              <SideBar />
-            </aside>
-            <main className="flex flex-col flex-1">
-              <header className="w-full h-[var(--h-header)] fixed  ">
-                <Header />
-              </header>
+            <SideBar />
+            <main className="flex flex-col flex-1 ">
+              <Header />
               <div className="main-container mt-[var(--h-header)] text-[var(--c-text-t1)] ">
                 {children}
               </div>

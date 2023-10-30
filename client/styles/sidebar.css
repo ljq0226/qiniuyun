@@ -3,6 +3,12 @@
 @tailwind utilities;
 
 
+::-webkit-scrollbar{
+  display: none;
+}
+.sidebar{
+}
+
 @layer components{
   .flex-center{
     @apply justify-center items-center

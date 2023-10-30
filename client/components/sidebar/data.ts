@@ -31,7 +31,7 @@ export const NavLinks: NavLinkState[] = [
     title: '我的',
   },
   {
-    icon: 'emojione:satellite-antenna',
+    icon: 'fluent-emoji:television',
     href: '/live',
     title: '直播',
   },
