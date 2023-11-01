@@ -10,4 +10,7 @@
   .hover-animation {
     @apply transition-colors duration-200 hover:bg-active
   }
+  .boldfont{
+    @apply text-[--c-text-t0] text-[18px] font-semibold
+  }
 }

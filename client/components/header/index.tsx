@@ -1,5 +1,5 @@
-import Avatar from '../ui/Avatar'
 import SearchInput from './SearchInput'
+import UserAvatar from './UserAvatar'
 
 function Header() {
   return (
@@ -10,7 +10,7 @@ function Header() {
       <div className="flex-[0.7]"></div>
 
       <div className="align-right absolute right-[150px] lg:right-[300px]">
-        <Avatar src="/img/user2.webp" round />
+        <UserAvatar />
       </div>
     </header>
 
