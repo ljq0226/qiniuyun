@@ -30,7 +30,7 @@ function UserAvatar() {
       </div>
       <div
         onMouseLeave={handleMouseLeave}
-        style={{ opacity: isShow ? 90 : 0 }}
+        style={{ display: isShow ? 'block' : 'none' }}
         className="flex px-4 absolute right-0 top-0 mt-[50px] bg-[var(--c-bg-b1)] flex-col w-[--w-header-useravatar] h-[--h-header-useravatar] border border-solid border-[var(--c-secondary-default)] rounded-2xl"
       >
         <div className="pt-4 w-full overflow-hidden text-[--c-text-t0] text-[20px] font-semibold ">
