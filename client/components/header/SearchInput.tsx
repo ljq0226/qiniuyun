@@ -33,7 +33,7 @@ function SearchInput() {
           className="left-0 top-0 mt-[--h-header]  absolute drop-shadow-2xl p-6 w-[--w-header-input] lg:w-[--w-header-input-w2]
            border border-solid border-[var(--c-secondary-default)] rounded-2xl
            h-[var(--h-header-hotSearch)] bg-[var(--c-bg-b1)]"
-          style={{ display: isShow ? 'block' : 'none' }}
+          style={{ top: isShow ? 0 : -1000 }}
         >
           <HotSearch />
         </div>

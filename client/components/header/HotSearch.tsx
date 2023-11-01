@@ -1,7 +1,6 @@
 'use client'
 import cn from 'clsx'
 import { Icon } from '@iconify/react'
-import { title } from 'process'
 
 interface GuessDataType {
   title: string
