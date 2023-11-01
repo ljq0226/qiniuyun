@@ -24,11 +24,11 @@ const GuessData: GuessDataType[] = [
   },
   {
     title: '旅行狂想',
-    isHot: true,
+    isHot: false,
   },
   {
     title: '时尚搭配',
-    isHot: true,
+    isHot: false,
   },
   {
     title: '健身健美',
@@ -44,7 +44,7 @@ const GuessData: GuessDataType[] = [
   },
   {
     title: '游戏攻略',
-    isHot: false,
+    isHot: true,
   },
   {
     title: '萌宠日常',
@@ -73,15 +73,12 @@ const HotPoint: HotPointType[] = [
 ]
 function HotSearch() {
   return (
-    <div className="absolute  p-8 w-[330px] mt-2 border border-solid border-[var(--c-secondary-default)]
-    rounded-2xl  h-[var(--h-header-hotSearch)] bg-[var(--c-bg-b1)]"
-    >
-
+    <>
       <div className="flex">
-        <div className='text-[var(--c-text-t0)]'>猜你想搜</div>
+        <div className="text-[var(--c-text-t0)] text-[21px] font-bold ">猜你想搜</div>
         <div className="flex-1"></div>
-        <div className='flex space-x-1 flex-center'>
-          <Icon icon="twemoji:cyclone"></Icon>
+        <div className="flex space-x-1 text-[18px] flex-center">
+          <Icon height={20} icon="twemoji:cyclone"></Icon>
           <div>换一换 </div>
         </div>
       </div>
@@ -89,27 +86,33 @@ function HotSearch() {
         {
           GuessData.map(((item: GuessDataType) => {
             return (
-              <div className={cn('mr-4', item.isHot ? 'text-[--c-primary]' : '')}>
-                {item.title}
+              <div className={cn('pr-4 overflow-hidden whitespace-nowrap flex items-center justify-start pl-2 py-2 rounded-lg hover:cursor-pointer text-[21px] pb-2 hover:bg-[--c-bg-b3] hover:text-[--c-primary] w-[45%] h-[40px] ', item.isHot ? 'text-[--c-primary]' : '')}>
+                <span className="truncate">
+                  {item.title}
+                </span>
               </div>
             )
           }))
         }
 
       </div>
-      <h2 className='text-[var(--c-text-t0)] '>热点话题</h2>
+      <h2 className="text-[var(--c-text-t0)] text-[21px] font-bold  ">热点话题</h2>
       <div>
         {
-          HotPoint.map((item:HotPointType,key:number)=>(
-            <div className='flex'>
-              <Icon icon={RankIcon[key]}></Icon>
-              {item.title}
+          HotPoint.map((item: HotPointType, key: number) => (
+            <div className="flex items-center w-full hover:bg-[--c-bg-b3] p-2 rounded-lg hover:text-[--c-primary] hover:cursor-pointer text-[21px] pb-2">
+  <Icon height={30} icon={RankIcon[key]}></Icon>
+  <div className="flex flex-center ml-1 overflow-hidden whitespace-nowrap">
+              <span className="truncate">
+                {item.title}
+              </span>
             </div>
+</div>
           ))
         }
       </div>
 
-    </div>
+    </>
   )
 }
 export default HotSearch

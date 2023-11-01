@@ -1,6 +1,7 @@
 :root{
   --h-header: 80px;
-  --w-header-input:340px;
+  --w-header-input-w2:500px;
+  --w-header-input:350px;
   --w-sidebar-w1:120px;
   --w-sidebar-w2:240px;
   --w-sidebar-nav-w1:100px;

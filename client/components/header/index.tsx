@@ -6,7 +6,6 @@ function Header() {
 
     <header className=" w-full h-[var(--h-header)] fixed flex flex-center items-center  ">
       <div className="lg:flex-[0.3]"></div>
-
       <SearchInput />
       <div className="flex-[0.7]"></div>
 
