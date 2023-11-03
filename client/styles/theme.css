@@ -1,4 +1,5 @@
 :root{
+  --w-minwidth:680px;
   --h-header: 80px;
   --w-header-input-w2:500px;
   --w-header-input:350px;
@@ -13,7 +14,7 @@
   --w-header-useravatar:448px;
   --w-header-useravatar:448px;
   --h-header-useravatar:191px;
-
+  --w-video-w1:
 }
 
 :root {

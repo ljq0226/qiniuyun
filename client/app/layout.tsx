@@ -20,7 +20,7 @@ export default function RootLayout({
         <div className="flex bg-[var(--c-bg-b0)] h-full">
           <div className="relative flex h-full w-full text-[var(--c-text-t3)] bg-no-repeat bg-cover bg-[url(https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/test.png)] bg-[var(--c-bg-b0)] ">
             <SideBar />
-            <main className="flex flex-col flex-1 ">
+            <main className="flex flex-col flex-1 min-w-[680px]">
               <Header />
               <div className="main-container mt-[var(--h-header)] text-[var(--c-text-t1)] ">
                 {children}
