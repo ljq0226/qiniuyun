@@ -1,5 +1,6 @@
 'use client'
 import cn from 'clsx'
+
 function formatTime(time: number): string {
   const minutes = Math.floor(time / 60)
   const seconds = Math.floor(time % 60)
@@ -8,7 +9,9 @@ function formatTime(time: number): string {
   return `${formattedMinutes}:${formattedSeconds}`
 }
 interface Props {
-  currentTime: number, duration: number, className?: string
+  currentTime: number
+  duration: number
+  className?: string
 }
 
 const useVideoTime: React.FC<Props> = ({ currentTime, duration, className }: Props) => {
