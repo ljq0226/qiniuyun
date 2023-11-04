@@ -17,7 +17,6 @@ function SearchInput() {
     <>
       <div
         className="relative py-4 w-[--w-header-input] lg:w-[--w-header-input-w2] h-full "
-        onMouseLeave={handleMouseLeave}
       >
         <div
           className="w-full flex  h-full  text-[22px]  border-2 border-solid border-[rgba(0,0,0,.7)] rounded-xl "
@@ -30,10 +29,12 @@ function SearchInput() {
           </button>
         </div>
         <div
-          className="left-0 top-0 mt-[--h-header]  absolute drop-shadow-2xl p-6 w-[--w-header-input] lg:w-[--w-header-input-w2]
+          className="left-0 z-50 top-0 mt-[--h-header] absolute drop-shadow-2xl p-6 w-[--w-header-input] lg:w-[--w-header-input-w2]
            border border-solid border-[var(--c-secondary-default)] rounded-2xl
-           h-[var(--h-header-hotSearch)] bg-[var(--c-bg-b1)]"
+           bg-[var(--c-bg-b1)]"
           style={{ top: isShow ? 0 : -1000 }}
+          // style={{ display: isShow ? 'block' : 'none' }}
+          onMouseLeave={handleMouseLeave}
         >
           <HotSearch />
         </div>

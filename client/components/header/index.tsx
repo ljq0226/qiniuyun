@@ -4,7 +4,7 @@ import UserAvatar from './UserAvatar'
 function Header() {
   return (
 
-    <header className=" w-full h-[var(--h-header)] fixed flex flex-center items-center  ">
+    <header className="z-10 w-full h-[var(--h-header)] fixed flex flex-center items-center  ">
       <div className="lg:flex-[0.3]"></div>
       <SearchInput />
       <div className="flex-[0.7]"></div>

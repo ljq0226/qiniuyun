@@ -41,7 +41,6 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
     }
   }, [])
 
-
   const handleMouseEnter = () => {
     togglePlaying('p')
   }
@@ -68,7 +67,7 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
 
   return (
     <div
-      className="mb-6 cursor-pointer bg-[--c-bg-b1] text-[20px] rounded-xl overflow-hidden border-[0.5px] border-solid border-[hsla(0,0%,100%,.1)]"
+      className="mb-6 z-[1] cursor-pointer bg-[--c-bg-b1] text-[20px] rounded-xl overflow-hidden border-[0.5px] border-solid border-[hsla(0,0%,100%,.1)]"
       style={{ width: cardWidth }}
     >
 
@@ -129,7 +128,7 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
                 </div>
 
                 <div
-                  style={{ height: isHover ? 8 : 4 }}
+                  style={{ height: isHover ? 6 : 4 }}
                   className="absolute  bottom-0 left-0 w-full bg-[hsla(0,0%,100%,.6)]"
                 >
                   {isHover
@@ -140,10 +139,8 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
                         onMouseDown={throttle((e) => {
                           e.preventDefault()
                           const video = videoRef.current
-                          if (video) {
+                          if (video)
                             togglePlaying('s')
-                          }
-
                         }, 300)}
                         onMouseUp={(e) => {
                           e.preventDefault()
@@ -168,18 +165,21 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
                         max="100"
                         step="0.01"
                       />
-                    )
+                      )
                     : (
                       <div className="flex w-full absolute rounded h-full left-0 bottom-0 z-[20]  bg-white" style={{ width: `${progress}%` }}>
                       </div>
-                    )}
+                      )}
                 </div>
               </div>
 
             </div>
           </div>
         </div>
-        <div className="p-3 flex bg-[--c-bg-b1]  flex-col hover:bg-[--card-bg-0-hover] ">
+        <div
+          onMouseLeave={throttle(handleMouseLeave, 300, true)}
+          className="p-3 flex bg-[--c-bg-b1] select-none  flex-col hover:bg-[--card-bg-0-hover] "
+        >
 
           <div className="text-[--c-text-t1] overflow-hidden text-ellipsis break-all">
             很好奇，当代网友能把遗憾写到什么程度

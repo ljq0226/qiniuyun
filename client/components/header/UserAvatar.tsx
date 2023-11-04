@@ -25,13 +25,17 @@ function UserAvatar() {
 
   return (
     <>
-      <div className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      <div
+        className="relative"
+        onMouseEnter={handleMouseEnter}
+      >
         <Avatar src="/img/user2.webp" round />
       </div>
       <div
+        onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ right: isShow ? 0 : -1000 }}
-        className="flex px-4 absolute right-0 top-0 mt-[50px] bg-[var(--c-bg-b1)] flex-col w-[--w-header-useravatar] h-[--h-header-useravatar] border border-solid border-[var(--c-secondary-default)] rounded-2xl"
+        className="flex z-[30] px-4 absolute right-0 top-0 mt-[50px] bg-[var(--c-bg-b1)] flex-col w-[--w-header-useravatar] h-[--h-header-useravatar] border border-solid border-[var(--c-secondary-default)] rounded-2xl"
       >
         <div className="pt-4 w-full overflow-hidden text-[--c-text-t0] text-[20px] font-semibold ">
           <div className="w-[40%]">

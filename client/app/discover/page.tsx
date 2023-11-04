@@ -41,7 +41,10 @@ export default function Page() {
     cardWidth,
   }
   return (
-    <div className="relative h-full w-full">
+    <div className="relative bg-transparent h-full w-full flex ">
+      <Video {...VideoProps} />
+      <Video {...VideoProps} />
+      <Video {...VideoProps} />
       <Video {...VideoProps} />
     </div>
   )

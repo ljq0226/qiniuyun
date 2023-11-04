@@ -22,7 +22,7 @@ export default function RootLayout({
             <SideBar />
             <main className="flex flex-col flex-1 min-w-[680px]">
               <Header />
-              <div className="main-container mt-[var(--h-header)] text-[var(--c-text-t1)] ">
+              <div className="main-container z-0 h-full overflow-y-scroll mt-[var(--h-header)] text-[var(--c-text-t1)] ">
                 {children}
               </div>
             </main>
