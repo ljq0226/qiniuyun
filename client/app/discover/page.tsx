@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Video from '@/components/video/Video'
 import useWindowSize from '@/hooks/useWindowSize'
 import Header from '@/components/header'
 
@@ -72,7 +71,7 @@ export default function Page() {
       <Header isFull={true} />
       <div className="main-container z-0 h-full overflow-y-scroll mt-[var(--h-header)] text-[var(--c-text-t1)] ">
 
-        <div className="relative px-6  bg-transparent h-full w-full">
+        {/* <div className="relative px-6  bg-transparent h-full w-full">
           {arr.map((item, index) => {
             const top = index == 0 ? 0 : 1
             const left = index % cardArrange == 0 ? 24 : (index % 4) * cardWidth + (index % 4) * 16
@@ -84,7 +83,7 @@ export default function Page() {
           },
 
           )}
-        </div>
+        </div> */}
       </div>
     </>
 
