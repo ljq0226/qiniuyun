@@ -1,6 +1,7 @@
 'use client'
-
+import { signOut } from "next-auth/react"
 import { Icon } from '@iconify/react/dist/iconify.js'
+import { UserStore } from "@/store"
 
 interface Props {
   isShow: boolean
@@ -10,6 +11,11 @@ interface Props {
 }
 
 function UserPop({ isShow, handleMouseEnter, handleMouseLeave, handleClick }: Props) {
+  const clearUser = UserStore(s => s.clearUser)
+  const handleSignOut = () => {
+    clearUser()
+    signOut()
+  }
   return (
     <div
       onMouseEnter={handleMouseEnter}
@@ -47,6 +53,10 @@ function UserPop({ isShow, handleMouseEnter, handleMouseLeave, handleClick }: Pr
         </div>
       </div>
       <div className="flex justify-end space-x-2 w-full pr-10 ">
+        <div className='ml-2 cursor-pointer'
+          onClick={handleSignOut}
+        >退出登录</div>
+
         <div className="flex flex-center hover:text-[--c-text-t0]">
           <Icon icon="icon-park-outline:clothes-crew-neck" height={18}></Icon>
           <button className="ml-1" onClick={handleClick}>切换主题</button>

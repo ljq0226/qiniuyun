@@ -4,6 +4,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { useEffect } from 'react'
 import { CreateUser } from '@/api/user/CreateUser.gql'
 import { useMutation } from '@apollo/client'
+import { UserStore } from '@/store'
 interface Props {
   handleMouseEnter: () => void
   handleMouseLeave: () => void
@@ -17,6 +18,7 @@ interface SessionUser {
 
 function LoginButton({ handleMouseEnter, handleMouseLeave }: Props) {
   const { data: session } = useSession()
+  const setUser = UserStore((s) => s.setUser)
   const [createUser] = useMutation(CreateUser)
   useEffect(() => {
     const create = async () => {
@@ -35,10 +37,13 @@ function LoginButton({ handleMouseEnter, handleMouseLeave }: Props) {
               },
             },
           })
+          setUser(data.createUser)
+          console.log(data.createUser)
           localStorage.setItem('user_info', JSON.stringify(data.createUser))
         }
-      } else {
-        console.log('已注册 ',)
+        else {
+          setUser(JSON.parse(info || '{}'))
+        }
       }
     }
     create()

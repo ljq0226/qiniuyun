@@ -5,6 +5,7 @@ import UserAvatar from './UserAvatar'
 import LoginButton from './LoginButton'
 import UserPop from './UserPop'
 import useTheme from '@/hooks/useTheme'
+import { UserStore } from '@/store'
 
 interface Props {
   isFull: boolean
@@ -17,7 +18,7 @@ interface UserInfo {
 }
 
 function Header({ isFull }: Props) {
-  const [user, setUser] = useState<UserInfo>()
+  const uid = UserStore(s => s.uid)
   const { theme, setTheme } = useTheme()
   const [isShow, setIsShow] = useState(false)
   const handleMouseEnter = () => {
@@ -32,11 +33,6 @@ function Header({ isFull }: Props) {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
 
-  useEffect(() => {
-    const user: UserInfo | null = JSON.parse(localStorage.getItem('user_info') || '{}')
-    if (user?.uid)
-      setUser(user)
-  }, [])
 
   const handleEvent = {
     handleMouseLeave,
@@ -56,7 +52,7 @@ function Header({ isFull }: Props) {
       <div className="flex-[0.7]"></div>
 
       <div className="align-right  h-full mr-3 lg:mr-10">
-        {user?.uid
+        {uid
           ? <UserAvatar {...handleEvent} />
           : <LoginButton {...handleEvent} />}
         <UserPop {...userpop} />
