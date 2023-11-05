@@ -6,9 +6,10 @@ import { useEffect, useRef, useState } from 'react';
 import '@/styles/video.css'
 interface Props {
   isVertical: boolean
+  url: string
 }
 
-function FullVideo({ isVertical }: Props) {
+function FullVideo({ isVertical, url }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const processRef = useRef<HTMLInputElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -28,13 +29,11 @@ function FullVideo({ isVertical }: Props) {
       setProgress(calculatedProgress)
     }
     const handleMouseMove = (event: MouseEvent) => {
-      const mouseY = event.clientY; // 鼠标在视口中的垂直位置
-      const screenHeight = window.innerHeight; // 视口的高度
-      const distanceFromBottom = screenHeight - mouseY; // 鼠标距离屏幕底部的距离
+      const mouseY = event.clientY;
+      const screenHeight = window.innerHeight;
+      const distanceFromBottom = screenHeight - mouseY;
 
-      // 在屏幕最下方80到90像素处执行一些操作
       if (distanceFromBottom >= 50 && distanceFromBottom <= 60) {
-        // 执行你的操作
         if (!isHover) setIsHover(true)
       }
     };
@@ -71,23 +70,24 @@ function FullVideo({ isVertical }: Props) {
   }
 
   const videoStyle = isVertical ?
-    { height: `calc(100vh - 100px)`, top: 0 } :
+    { height: `calc(100vh - 60px)`, top: 0 } :
     { height: `56.25vw`, top: `calc((100vh - 56.25vw) / 2)` }
-
+  const elementStyle = {
+    top: 'calc((100vh - 80px) / 2)',
+    transform: 'translateX(-40%)'
+  };
   return (
-    <div className="absolute cursor-pointer w-screen h-screen overflow-hidden top-0 left-0"
-    >
       <div className="w-full h-full relative"
       >
-        <div className="absolute w-full left-0 bottom-[0] z-10 flex flex-col bg-transparent text-white text-[20px]"
+        <div className="fixed w-full left-0 bottom-0 z-20 flex flex-col bg-transparent text-white text-[22px]"
           onMouseEnter={throttle(() => {
             console.log(' hover',)
             setIsHover(true)
           }, 300)}
           onMouseLeave={() => setIsHover(false)}
         >
-          <div className='text-[22px] pl-3'>@LBJ * 9月 4 日</div>
-          <div className='pl-3 py-3'>雨纷纷 旧故里草木深</div>
+          <div className='text-[26px] pl-5'>@LBJ * 9月 4 日</div>
+          <div className='pl-5 py-3'>雨纷纷 旧故里草木深</div>
           <div
             style={{ height: isHover ? 4 : 4 }}
             className="relative left-0 z-[10] w-full bg-[hsla(0,0%,100%,.6)]"
@@ -132,8 +132,18 @@ function FullVideo({ isVertical }: Props) {
               )}
           </div>
 
-          <div className='flex pl-3 w-full py-3'>
-            <Icon icon={''} />
+          <div className='flex items-center pl-5 w-full py-3'>
+            <div onClick={() => {
+              console.log('click')
+              handleClickVideo()
+            }}>
+              {
+                isPlaying ?
+                  <Icon height={24} icon={'ph:pause-fill'} />
+                  :
+                  <Icon height={24} icon={'fluent:play-12-filled'} />
+              }
+            </div>
             <div>
               {VideoTime}
             </div>
@@ -146,18 +156,30 @@ function FullVideo({ isVertical }: Props) {
             </div>
           </div>
         </div>
-        <video
-          ref={videoRef}
-          onClick={handleClickVideo}
-          loop
-          className="absolute left-0 w-full z-[10]" style={videoStyle} >
-          <source src="/video/v2.mp4" />
-        </video>
-        <div className="absolute left-0 scale-125 top-0 w-full z-0 h-full bg-[url(http://s34q2o4v2.hd-bkt.clouddn.com/img2.jpeg)] bg-center bg-no-repeat bg-cover "
+        <div className="relative w-full " >
+          <video
+            ref={videoRef}
+            onClick={handleClickVideo}
+            loop
+            className="absolute left-0 w-full z-[10]" style={videoStyle} >
+            <source src={`/video/v${url}.mp4`} />
+          </video>
+          <div className='absolute w-24 h-24 flex flex-center left-[50%] z-10'
+            style={elementStyle}
+            onClick={() => {
+              handleClickVideo()
+            }}
+          >
+            {!isPlaying && <Icon height={100} color='#f3eae5' icon={'fluent:play-12-filled'} />}
+          </div>
+        </div>
+
+        <div className={`absolute left-0 scale-125 top-0 w-full z-0 h-full
+          bg-[url(http://s34q2o4v2.hd-bkt.clouddn.com/img${url}.jpeg)]
+        bg-center bg-no-repeat bg-cover `}
           style={{ filter: 'blur(20px)' }}>
         </div>
       </div>
-    </div>
   )
 }
 export default FullVideo
