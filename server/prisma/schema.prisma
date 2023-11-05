@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  uid       String   @id @unique @default(cuid())
+  avatar    String   @unique
+  username  String
+  email     String
+  signature String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Follow {
+  id          Int    @id @unique @default(autoincrement())
+  followerId  String
+  followingId String
+}
+
+model Tag {
+  tid   Int    @id @unique @default(autoincrement())
+  title String
+}
+
+model VideoTag {
+  id    Int    @id @unique @default(autoincrement())
+  vid   String
+  tid   String
+  title String
+}
+
+model Video {
+  vid        String   @id @unique @default(cuid())
+  uid        String
+  video_url  String
+  cover_img  String
+  isVertical Boolean
+  title      String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now()) @updatedAt
+}
+
+model BulletChat {
+  bid        String @id @unique @default(cuid())
+  uid        String
+  vid        String
+  start_time String
+  text       String
+}
+
+model Comment {
+  cid       String   @id @unique @default(cuid())
+  text      String
+  status    Int      @default(1)
+  reply_id  String   @default("0")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model VideoLike {
+  id  Int    @id @unique @default(autoincrement())
+  uid String
+  vid String
+}
+
+model CommentLike {
+  id  Int    @id @unique @default(autoincrement())
+  uid String
+  vid String
+}
+
+model Star {
+  id  Int    @id @unique @default(autoincrement())
+  uid String
+  vid String
+}
+
+model ShareLink {
+  id   Int    @id @unique @default(autoincrement())
+  vid  String
+  text String
+}
