@@ -7,13 +7,18 @@ function useWindowSize() {
     height: 0,
   })
 
-  useEffect(() => {
-    setWindowSize({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    })
-  }, [])
+  const [hasExecutedEffect, setHasExecutedEffect] = useState(false)
 
+  useEffect(() => {
+    // 只有在 hasExecutedEffect 为 false 时执行代码
+    if (!hasExecutedEffect) {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      })
+      setHasExecutedEffect(true)
+    }
+  }, [hasExecutedEffect])
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({

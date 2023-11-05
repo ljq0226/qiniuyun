@@ -1,10 +1,14 @@
 import SearchInput from './SearchInput'
 import UserAvatar from './UserAvatar'
 
-function Header() {
+interface Props {
+  isFull: boolean
+}
+
+function Header({ isFull }: Props) {
   return (
 
-    <header className="z-10 w-full h-[var(--h-header)] fixed flex flex-center items-center  ">
+    <header style={{ position: isFull ? 'relative' : 'fixed' }} className="z-10 w-full h-[var(--h-header)] flex flex-center items-center  ">
       <div className="lg:flex-[0.3]"></div>
       <SearchInput />
       <div className="flex-[0.7]"></div>

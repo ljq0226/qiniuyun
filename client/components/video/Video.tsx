@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Icon } from '@iconify/react'
 import useVideoTime from '@/hooks/useVideoTime'
 import { formatTime, throttle } from '@/libs'
-import '@/styles/video.css'
 
 interface Props {
   windowSize: {
@@ -12,12 +11,17 @@ interface Props {
   }
   cardArrange: number
   cardWidth: number
+  cardTop: number
+  cardLeft: number
+  videoUrl: string
+  imgUrl: string
+  isVertical: boolean
 }
 
-function Video({ windowSize, cardArrange, cardWidth }: Props) {
+function Video({ windowSize, cardArrange, isVertical, cardWidth, cardLeft, cardTop, videoUrl, imgUrl }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const processRef = useRef<HTMLInputElement | null>(null)
-  const [isPlaying, setIsPalying] = useState(false)
+  const [isPlaying, setIsplaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [currentTime, setCurrenTime] = useState(0)
   const [durationTime, setDuration] = useState(0)
@@ -51,37 +55,41 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
     const video = videoRef.current as HTMLVideoElement
     if (isPlay === 'p') {
       console.log(' play')
-      setIsPalying(true)
+      setIsplaying(true)
       video.play()
       return
     }
     else if (isPlay === 's') {
       console.log(' stop')
 
-      setIsPalying(false)
+      setIsplaying(false)
       video.pause()
       return
     }
     isPlay ? video.pause() : video.play()
   }
+  const height = isVertical ? cardWidth * 16 / 9 : cardWidth * 9 / 16
 
   return (
     <div
-      className="mb-6 z-[1] cursor-pointer bg-[--c-bg-b1] text-[20px] rounded-xl overflow-hidden border-[0.5px] border-solid border-[hsla(0,0%,100%,.1)]"
-      style={{ width: cardWidth }}
+      className="video-card absolute mb-6 z-[1] cursor-pointer bg-[--c-bg-b1] text-[20px] rounded-xl overflow-hidden border-[0.5px] border-solid border-[hsla(0,0%,100%,.1)]"
+      style={{ width: cardWidth, top: cardTop, left: cardLeft }}
     >
 
       {/* <a href="http://localhost:3000/discover" className="relative w-full"> */}
       <div className="relative w-full">
         <div
           className="absolute w-full text-white"
-          style={{ zIndex: isPlaying ? -10 : 10 }}
+          style={{
+            zIndex: isPlaying ? -10 : 10,
+            height,
+          }}
         >
           <img
             onMouseEnter={throttle(handleMouseEnter, 300, true)}
             onMouseLeave={throttle(handleMouseLeave, 1000)}
-            className="w-full"
-            src="/img/img2.jpeg"
+            className="w-full h-full "
+            src={imgUrl}
             alt=""
           />
           <div className="absolute bottom-0 left-0 w-full flex z-[10] h-10 ">
@@ -93,7 +101,7 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
             <div className="bg-[rgba(0,0,0,.7) w-16 h-10 flex flex-center rounded min-w-[43px] ]">{formatTime(durationTime)}</div>
           </div>
         </div>
-        <div className="relative">
+        <div className="relative" style={{ height }}>
           <div
             onMouseEnter={throttle(handleMouseEnter, 300, true)}
             onMouseLeave={throttle(handleMouseLeave, 300, true)}
@@ -103,7 +111,7 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
               loop
               style={{}}
             >
-              <source src="/video/v2.mp4" type="video/mp4" />
+              <source src={videoUrl} type="video/mp4" />
             </video>
             <div
               className="absolute bottom-0 h-10 z-[1] w-full"
@@ -178,7 +186,7 @@ function Video({ windowSize, cardArrange, cardWidth }: Props) {
         </div>
         <div
           onMouseLeave={throttle(handleMouseLeave, 300, true)}
-          className="p-3 flex bg-[--c-bg-b1] select-none  flex-col hover:bg-[--card-bg-0-hover] "
+          className="p-3 flex bg-[--c-bg-b1] select-none  flex-col hover:bg-[--card-bg-0-hover] h-32 "
         >
 
           <div className="text-[--c-text-t1] overflow-hidden text-ellipsis break-all">
