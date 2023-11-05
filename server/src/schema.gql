@@ -28,6 +28,7 @@ input UpdateUserInput {
 
 type User {
   avatar: String!
+  signature: String!
   uid: String!
   username: String!
 }

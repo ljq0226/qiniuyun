@@ -10,4 +10,8 @@ export class User {
 
   @Field(() => String)
   username: string
+  
+  @Field(() => String)
+  signature: string
+  
 }
