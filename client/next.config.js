@@ -12,8 +12,25 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(graphql|gql)/,
+      exclude: /node_modules/,
+      loader: 'graphql-tag/loader',
+    })
+    config.module.rules.push({
+      test: /\.(md)/,
+      exclude: /node_modules/,
+      loader: 'raw-loader',
+    })
+    return config
+  },
 }
 
 module.exports = {
   ...nextConfig,
+  env: {
+    clientId: process.env.GITHUB_ID,
+    clientSecret: process.env.GITHUB_SECRET,
+  },
 }
