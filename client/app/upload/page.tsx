@@ -108,7 +108,7 @@ function FileUploadComponent() {
   }
 
   return (
-    <div>
+    <div className='mt-[400px] ml-[300px]'>
       <input type="file" onChange={handleFileChange} />
     </div>
   )

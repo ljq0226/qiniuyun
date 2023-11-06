@@ -4,6 +4,7 @@ import '../styles/theme.css'
 import AuthProvider from '../context/AuthProvider'
 import SideBar from '@/components/sidebar'
 import ApolloProvider from '@/context/ApolloProvider'
+import Header from '@/components/header'
 
 export const metadata: Metadata = {
   title: '抖音 APP ',
@@ -24,6 +25,7 @@ export default function RootLayout({
               <div className="relative flex h-full w-full text-[var(--c-text-t3)] bg-no-repeat bg-cover bg-[url(https://p-pc-weboff.byteimg.com/tos-cn-i-9r5gewecjs/test.png)] bg-[var(--c-bg-b0)] ">
                 <SideBar />
                 <main className="flex flex-col flex-1 min-w-[680px]">
+                  <Header />
                   {children}
                 </main>
               </div>

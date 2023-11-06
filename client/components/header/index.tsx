@@ -5,11 +5,8 @@ import UserAvatar from './UserAvatar'
 import LoginButton from './LoginButton'
 import UserPop from './UserPop'
 import useTheme from '@/hooks/useTheme'
-import { UserStore } from '@/store'
+import { UserStore, LayoutSotre } from '@/store'
 
-interface Props {
-  isFull: boolean
-}
 
 interface UserInfo {
   uid: string
@@ -17,7 +14,8 @@ interface UserInfo {
   avatar: string
 }
 
-function Header({ isFull }: Props) {
+function Header() {
+  const isFull = LayoutSotre(s => s.isFull)
   const uid = UserStore(s => s.uid)
   const { theme, setTheme } = useTheme()
   const [isShow, setIsShow] = useState(false)
@@ -45,7 +43,7 @@ function Header({ isFull }: Props) {
 
   return (
 
-    <header style={{ position: isFull ? 'relative' : 'fixed' }} className="z-10 w-full h-[var(--h-header)] flex flex-center items-center  ">
+    <header style={{ position: isFull ? 'relative' : 'fixed' }} className="z-[5] w-full h-[var(--h-header)] flex flex-center items-center  ">
       <div className="lg:flex-[0.3]"></div>
       <SearchInput />
       <div className="flex-[0.7]"></div>

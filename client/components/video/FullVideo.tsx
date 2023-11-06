@@ -7,10 +7,11 @@ import '@/styles/video.css'
 
 interface Props {
   isVertical: boolean
-  url: string
+  videoUrl: string
+  coverImg: string
 }
 
-function FullVideo({ isVertical, url }: Props) {
+function FullVideo({ isVertical, videoUrl, coverImg }: Props) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const processRef = useRef<HTMLInputElement | null>(null)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -79,7 +80,7 @@ function FullVideo({ isVertical, url }: Props) {
     transform: 'translateX(-40%)',
   }
   return (
-    <div className="w-full h-full relative">
+    <div className="w-full h-full relative z-10">
       <div
         className="fixed w-full left-0 bottom-0 z-20 flex flex-col bg-transparent text-white text-[22px]"
         onMouseEnter={throttle(() => {
@@ -127,11 +128,11 @@ function FullVideo({ isVertical, url }: Props) {
                 max="100"
                 step="0.01"
               />
-              )
+            )
             : (
               <div className="flex w-full absolute rounded h-full left-0 bottom-0 z-[20]  bg-white" style={{ width: `${progress}%` }}>
               </div>
-              )}
+            )}
         </div>
 
         <div className="flex items-center pl-5 w-full py-3">
@@ -141,10 +142,10 @@ function FullVideo({ isVertical, url }: Props) {
           }}
           >
             {
-                isPlaying
-                  ? <Icon height={24} icon="ph:pause-fill" />
-                  : <Icon height={24} icon="fluent:play-12-filled" />
-              }
+              isPlaying
+                ? <Icon height={24} icon="ph:pause-fill" />
+                : <Icon height={24} icon="fluent:play-12-filled" />
+            }
           </div>
           <div>
             {VideoTime}
@@ -166,7 +167,7 @@ function FullVideo({ isVertical, url }: Props) {
           className="absolute left-0 w-full z-[10]"
           style={videoStyle}
         >
-          <source src={`/video/v${url}.mp4`} />
+          <source src={`http://s34q2o4v2.hd-bkt.clouddn.com/ball/v4-1.mp4`} />
         </video>
         <div
           className="absolute w-24 h-24 flex flex-center left-[50%] z-10"
@@ -181,7 +182,7 @@ function FullVideo({ isVertical, url }: Props) {
 
       <div
         className={`absolute left-0 scale-125 top-0 w-full z-0 h-full
-          bg-[url(http://s34q2o4v2.hd-bkt.clouddn.com/img${url}.jpeg)]
+          bg-[url(http://s34q2o4v2.hd-bkt.clouddn.com/ball/v4-1.jpeg)]
         bg-center bg-no-repeat bg-cover `}
         style={{ filter: 'blur(20px)' }}
       >

@@ -67,8 +67,6 @@ export default function Page() {
   const arr = [0, 3, 4, 5]
   return (
     <>
-
-      <Header isFull={true} />
       <div className="main-container z-0 h-full overflow-y-scroll mt-[var(--h-header)] text-[var(--c-text-t1)] ">
 
         {/* <div className="relative px-6  bg-transparent h-full w-full">
