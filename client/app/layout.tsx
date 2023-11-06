@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import '../styles/globals.css'
 import '../styles/theme.css'
+import '../styles/index.css'
 import AuthProvider from '../context/AuthProvider'
 import SideBar from '@/components/sidebar'
 import ApolloProvider from '@/context/ApolloProvider'

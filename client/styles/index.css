@@ -1,0 +1,9 @@
+/* 隐藏默认文本 */
+input[type="file"]::file-selector-button {
+  visibility: hidden;
+}
+
+/* 自定义按钮样式 */
+input[type="file"]::-webkit-file-upload-button {
+  /* 样式代码 */
+}

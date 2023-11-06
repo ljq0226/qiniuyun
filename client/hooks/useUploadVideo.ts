@@ -1,10 +1,8 @@
-'use client'
-import React from 'react'
 import * as qiniu from 'qiniu-js'
 
 // 将base64转换为文件
 
-async function uploadFile(file: any, preName: string) {
+export async function useUploadVideo(file: any, preName: string) {
   const uploadToken = process.env.NEXT_PUBLIC_TOKEN as string
   const putExtra = {
     mimeType: file.type,
@@ -97,20 +95,3 @@ async function uploadFile(file: any, preName: string) {
     }
   })
 }
-
-function FileUploadComponent() {
-  const handleFileChange = async (event: any) => {
-    event.preventDefault()
-    const file = event.target.files[0]
-    const preName = file.name.split('.')[0]
-
-    await uploadFile(file, preName)
-  }
-
-  return (
-    <div className='mt-[400px] ml-[300px]'>
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  )
-}
-export default FileUploadComponent
