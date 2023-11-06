@@ -21,7 +21,8 @@ import { AppController } from './app.controller'
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       sortSchema: true,
     }),
-    UserModule],
+    UserModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

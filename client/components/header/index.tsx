@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import SearchInput from './SearchInput'
 import UserAvatar from './UserAvatar'
 import LoginButton from './LoginButton'
@@ -32,7 +32,6 @@ function Header({ isFull }: Props) {
   const handleClick = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
-
 
   const handleEvent = {
     handleMouseLeave,

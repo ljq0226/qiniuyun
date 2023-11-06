@@ -1,7 +1,7 @@
 'use client'
-import { signOut } from "next-auth/react"
+import { signOut } from 'next-auth/react'
 import { Icon } from '@iconify/react/dist/iconify.js'
-import { UserStore } from "@/store"
+import { UserStore } from '@/store'
 
 interface Props {
   isShow: boolean
@@ -53,9 +53,12 @@ function UserPop({ isShow, handleMouseEnter, handleMouseLeave, handleClick }: Pr
         </div>
       </div>
       <div className="flex justify-end space-x-2 w-full pr-10 ">
-        <div className='ml-2 cursor-pointer'
+        <div
+          className="ml-2 cursor-pointer"
           onClick={handleSignOut}
-        >退出登录</div>
+        >
+          退出登录
+        </div>
 
         <div className="flex flex-center hover:text-[--c-text-t0]">
           <Icon icon="icon-park-outline:clothes-crew-neck" height={18}></Icon>
