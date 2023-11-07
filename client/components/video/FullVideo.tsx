@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import useVideoTime from '@/hooks/useVideoTime'
 import { throttle } from '@/libs'
 import '@/styles/video.css'
+import Image from 'next/image';
+import Avatar from '../ui/Avatar'
+import BulletChat from './BulletChat'
 
 interface Props {
   isVertical: boolean
@@ -79,6 +82,11 @@ function FullVideo({ isVertical, videoUrl, coverImg }: Props) {
     top: 'calc((100vh - 80px) / 2)',
     transform: 'translateX(-40%)',
   }
+
+  const bulletState = {
+    currentTime, durationTime,
+  }
+
   return (
     <div className="w-full h-full relative z-10">
       <div
@@ -89,6 +97,25 @@ function FullVideo({ isVertical, videoUrl, coverImg }: Props) {
         }, 300)}
         onMouseLeave={() => setIsHover(false)}
       >
+        <div className="absolute select-none cursor-default flex items-center text-white text-[20px] w-[80px] flex-col  h-[700px] right-10 bottom-[60px] space-y-4">
+          <Avatar className='' height={16} src="/img/user2.webp" round />
+          <div className='flex flex-col items-center '>
+            <Icon height={36} icon={'emojione-v1:red-heart'}></Icon>
+            <div className='mt-2'>11.2万</div>
+          </div>
+          <div className='flex flex-col items-center '>
+            <Icon height={36} icon={'noto-v1:keyboard'}></Icon>
+            <div className='mt-2'>6223</div>
+          </div>
+          <div className='flex flex-col items-center '>
+            <Icon height={36} icon={'noto-v1:star'}></Icon>
+            <div className='mt-2'>2.2万</div>
+          </div>
+          <div className='flex flex-col items-center '>
+            <Icon height={36} icon={'emojione:hugging-face'}></Icon>
+            <div className='mt-2'>9506</div>
+          </div>
+        </div>
         <div className="text-[26px] pl-5">@LBJ * 9月 4 日</div>
         <div className="pl-5 py-3">雨纷纷 旧故里草木深</div>
         <div
@@ -159,7 +186,12 @@ function FullVideo({ isVertical, videoUrl, coverImg }: Props) {
           </div>
         </div>
       </div>
-      <div className="relative w-full ">
+      <div className="relative w-full h-[80vh] ">
+        <div className='absolute w-[120%] px-[10vw] h-full left-0 top-0 z-20 '>
+          <BulletChat {...bulletState} startTime={1}   >
+          </BulletChat>
+          <div className='bg-cyan-500 h-[40px] p-1 px-4 absolute left-[90vw]'>弹幕 2</div>
+        </div>
         <video
           ref={videoRef}
           onClick={handleClickVideo}
@@ -178,6 +210,7 @@ function FullVideo({ isVertical, videoUrl, coverImg }: Props) {
         >
           {!isPlaying && <Icon height={100} color="#f3eae5" icon="fluent:play-12-filled" />}
         </div>
+
       </div>
 
       <div
